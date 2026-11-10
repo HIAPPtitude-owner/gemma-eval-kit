@@ -1,0 +1,11 @@
+{
+  "competition_wheels": {
+    "count": 124,
+    "sha256": "b884636ed90fb7660c2adc4ec12d2269000b61c7aeb53b55f4d56f105be6f982"
+  },
+  "harness": {
+    "c5_driver_py_sha256": "212902f24dad7b972a8205577567b4a5bc3e83e312ee84c5b4147efa640c6a1f",
+    "gold_driver_py_sha256": "0196ea76e0aee2ef3035f57dac614df71a57af10b2ededea73a6015198859758",
+    "provision_sh_sha256": "3c9dcf09eb801e2b015dd1e366fefcd14f9cdf946a67ae76883472f95c620b23"
+  }
+}

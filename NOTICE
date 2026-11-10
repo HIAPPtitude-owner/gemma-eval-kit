@@ -1,0 +1,9 @@
+gemma-eval-kit
+Copyright 2026 the gemma-eval-kit authors
+
+This product is licensed under the Apache License, Version 2.0 (see LICENSE).
+
+It contains only its authors' own code and labels. It does not include or redistribute the
+competition's files, task data, patches, problem statements, test patches or wheels, nor the
+swegemma or adk-eval-core packages. Users download those from Kaggle themselves, under the
+competition's own terms.

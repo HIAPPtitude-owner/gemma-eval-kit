@@ -1,0 +1,21 @@
+# syntax=docker/dockerfile:1
+# Runner for the public_docker route (factory.docker_kit). Built by `factory eval kit-build`:
+#   docker build -t factory-kit-runner:0.2.11 -f harness/docker_kit/Dockerfile.runner \
+#     --build-context shared=harness/shared \
+#     --build-context wheelhouse=<data_root>/wheelhouse harness/docker_kit
+# `wheelhouse` is the user's own copy of the Kaggle wheelhouse dataset (swegemma and
+# adk-eval-core exist only there); it is bind-mounted for the install and never copied in.
+# runner-constraints.txt is a byte copy of the WSL1 harness venv freeze (pins.json
+# wsl1.freeze_sha256), so this venv holds the same 191 pins as the WSL1 routes.
+FROM python:3.13-slim
+
+COPY runner-constraints.txt /factory/runner-constraints.txt
+RUN --mount=type=bind,from=wheelhouse,target=/wheelhouse \
+    pip install --no-cache-dir --find-links /wheelhouse \
+      -c /factory/runner-constraints.txt -r /factory/runner-constraints.txt swegemma==0.2.11
+
+# The drivers, unchanged (sha256-pinned in pins.json; asserted inside the runner per sweep).
+COPY --from=shared gold_driver.py c5_driver.py /factory/
+
+ENV TEST_TMPDIR=/tmp
+WORKDIR /factory

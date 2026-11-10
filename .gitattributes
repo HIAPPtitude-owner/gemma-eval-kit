@@ -1,0 +1,3 @@
+# Every file here is committed with LF, and harness files are sha256-pinned in pins.json and run
+# inside Linux: git must never convert line endings on checkout (e.g. core.autocrlf on Windows).
+* -text
